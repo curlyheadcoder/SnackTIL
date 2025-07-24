@@ -1,0 +1,121 @@
+/* Universal reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body: deep non-black background, light readable text */
+body {
+  background-color: #192235; /* Deep, modern midnight blue */
+  color: #f4f4fc; /* Very light bluish-ivory for contrast */
+  font-family: "Sono", sans-serif;
+  min-height: 100vh;
+}
+
+/* Header section styling */
+.header {
+  margin-bottom: 40px;
+  text-align: center;
+  padding: 24px 0 0 0;
+}
+
+/* Main heading (app title/logo text) */
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #33ffe6; /* Cyan-teal accent for strong contrast */
+  text-transform: uppercase;
+  font-family: "Coiny", cursive;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+
+/* List customization */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Fact card for each entry */
+.fact {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  font-family: "Coiny", cursive;
+  color: #152627; /* Very dark teal for strong legibility */
+  background-color: #fff3e9; /* Soft, warm peach-cream */
+  border-radius: 12px;
+  padding: 18px 24px;
+  margin-bottom: 18px;
+  box-shadow: 0 2px 8px rgba(48, 31, 94, 0.09);
+  transition: box-shadow 0.2s, background 0.2s;
+}
+.fact:hover {
+  box-shadow: 0 4px 16px rgba(51, 255, 230, 0.12);
+  background-color: #c7fddc;
+}
+
+/* Tag/category stylings: bold magenta on gentle lilac */
+.tag {
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  font-family: "Coiny", cursive;
+  color: #707fc4df; /* Vibrant magenta */
+  background: #111112; /* Deep lilac accent */
+  border-radius: 4px;
+  margin-top: 8px;
+  padding: 2px 8px;
+  letter-spacing: 0.5px;
+}
+
+/* Reaction Button Styles */
+.reaction-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  margin: 7px 6px 0 0;
+  background-color: #232f45; /* Slightly lighter than main background */
+  color: #33ffe6; /* Cyan-teal accent */
+  border: none;
+  border-radius: 24px;
+  font-family: "Sono", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 1px 5px rgba(40, 40, 70, 0.03);
+  transition: background 0.2s, color 0.2s, transform 0.07s;
+}
+
+.reaction-btn:hover,
+.reaction-btn:focus {
+  background-color: #33ffe6; /* Highlighted accent color */
+  color: #152627; /* Deep color for strong contrast */
+  outline: none;
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 12px rgba(51, 255, 230, 0.17);
+}
+
+.reaction-btn.active {
+  background-color: #e06be5; /* Vibrant magenta for active */
+  color: #fff3e9;
+  box-shadow: 0 2px 10px rgba(224, 107, 229, 0.12);
+}
+
+.reaction-btn .icon {
+  font-size: 1.2em; /* Larger icon for clarity */
+  line-height: 1;
+}
+
+/* Responsive for mobile */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2rem;
+  }
+  .fact {
+    font-size: 1rem;
+    padding: 14px 12px;
+  }
+}
