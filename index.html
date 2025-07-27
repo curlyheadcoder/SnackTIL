@@ -3,128 +3,312 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Coiny&family=Poppins:ital,wght@0,
-      100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,
-      500;1,600;1,700;1,800;1,900&family=Sono:wght@200..800&family=Titillium+Web:ital,
-      wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Coiny&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sono:wght@200..800&display=swap"
       rel="stylesheet"
     />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Coiny&family
-    =Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;
-    0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&
-    family=Sono:wght@200..800&display=swap"
-      rel="stylesheet"
-    />
-
     <link href="styles.css" rel="stylesheet" />
-    <title>SnackTIL</title>
+    <title>SnackTIL – Today I Learned</title>
   </head>
   <body>
-    <header>
-      <img
-        src="static/logo.png"
-        alt="Today I Learned logo"
-        height="65"
-        width="65"
-      />
-      <h1>Today I Learned</h1>
-      <button>Share a fact</button>
+    <!-- Header with logo and main button -->
+    <header class="header">
+      <div
+        class="logo"
+        style="flex-direction: row; align-items: center; gap: 18px"
+      >
+        <img
+          src="static/logo.png"
+          alt="TIL logo"
+          style="
+            height: 48px;
+            width: 48px;
+            object-fit: cover;
+            border-radius: 50%;
+          "
+        />
+        <h1
+          style="
+            margin: 0;
+            color: #33ffe6;
+            font-family: 'Coiny', cursive;
+            font-size: 2em;
+            letter-spacing: 2px;
+          "
+        >
+          Today I Learned
+        </h1>
+      </div>
+      <button class="share-btn">Share a Fact</button>
     </header>
 
-    <form>
-      <input type="text" placeholder="Share a fact..." />
-      <span>200</span>
-      <input type="text" placeholder="Trustworthy source..." />
-      <select>
-        <option value="">Choose Category:</option>
-        <option value="technology">Technology</option>
-        <option value="society">Society</option>
-        <option value="history">History</option>
-        <option value="science">Science</option>
-        <option value="art">Art</option>
-        <option value="globe">Globe</option>
-        <option value="sports">Sports</option>
-        <option value="all">All</option>
-      </select>
-      <button>Post</button>
-    </form>
-
-    <main>
-      <aside>
-        <ul>
-          <li><button>All</button></li>
-          <li><button>Technology</button></li>
-          <li><button>Society</button></li>
-        </ul>
+    <!-- Main content layout -->
+    <main
+      style="
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        max-width: 1440px;
+        margin: 2.2em auto 0 auto;
+        padding: 0 2vw;
+        gap: 28px;
+      "
+    >
+      <!-- Sidebar with category filters -->
+      <aside style="min-width: 160px; max-width: 200px">
+        <nav aria-label="Filter facts by category">
+          <h2
+            style="
+              font-size: 1.08em;
+              color: #ffeda1;
+              margin-bottom: 0.55em;
+              margin-top: 0.5em;
+              font-weight: 700;
+              letter-spacing: 1px;
+            "
+          >
+            Categories
+          </h2>
+          <ul>
+            <li><button>All</button></li>
+            <li><button>Technology</button></li>
+            <li><button>Society</button></li>
+            <li><button>History</button></li>
+            <li><button>Politics</button></li>
+            <li><button>Sports</button></li>
+          </ul>
+        </nav>
       </aside>
-      <section>
-        <ul>
-          <li>
-            <p class="fact">
-              React is being developed by by Meta (formerly Facebook) and a
-              community of individual developers and companies. It is an
-              open-source JavaScript library for building user interfaces,
-              particularly single-page applications where you can create
-              reusable UI components. React allows developers to build web
-              applications that can change data, without reloading the page.
-              <a href="https://opensource.fb.com/" target="_blank">(Source)</a>
-              <!-- link to add for source of information -->
-              <span class="tag"> #technology# </span>
-            </p>
-            <div>
-              <button class="reaction-btn">👍<strong>25</strong></button>
-              <button class="reaction-btn">🤯<strong>11</strong></button>
-              <button class="reaction-btn">⛔<strong>5</strong></button>
+
+      <!-- Page's content section -->
+      <section style="flex: 1; max-width: 980px">
+        <!-- Fact post form (hidden by default; use React/modal as desired) -->
+        <form style="margin: 0 auto 2.2em auto">
+          <input type="text" placeholder="Share a fact..." maxlength="200" />
+          <span>200</span>
+          <input type="text" placeholder="Trustworthy source..." />
+          <select>
+            <option value="">Choose Category:</option>
+            <option value="technology">Technology</option>
+            <option value="society">Society</option>
+            <option value="history">History</option>
+            <option value="science">Science</option>
+            <option value="art">Art</option>
+            <option value="globe">Globe</option>
+            <option value="sports">Sports</option>
+            <option value="politics">Politics</option>
+            <option value="all">All</option>
+          </select>
+          <button type="submit">Post</button>
+        </form>
+
+        <!-- Fact Tiles Grid -->
+        <ul class="facts-list">
+          <!-- fact-tile start -->
+          <li class="fact-tile">
+            <div class="fact-row">
+              <span class="fact-text">
+                React is being developed by Meta (formerly Facebook) and a
+                community of individual developers and companies. It is an
+                open-source JavaScript library for building user interfaces,
+                especially modern single-page applications.
+                <span class="tag technology">#technology#</span>
+                <a
+                  href="https://opensource.fb.com/"
+                  target="_blank"
+                  rel="noopener"
+                  >(Source)</a
+                >
+              </span>
+              <div class="reactions">
+                <button class="reaction-btn">👍<strong>25</strong></button>
+                <button class="reaction-btn">🤯<strong>11</strong></button>
+                <button class="reaction-btn">⛔<strong>5</strong></button>
+              </div>
             </div>
           </li>
-          <li>
-            <p class="fact">
-              The first iPhone was released on June 29, 2007. It was a
-              revolutionary product that combined a mobile phone, an iPod, and
-              an internet communication device into one. The iPhone has since
-              become one of the most popular smartphones in the world.
-              <a
-                href="https://en.wikipedia.org/wiki/IPhone_(1st_generation)"
-                target="_blank"
-                >(Source)</a
-              >
-              <span class="tag"> #technology# </span>
-            </p>
-            <div>
-              <button class="reaction-btn">👍<strong>17</strong></button>
-              <button class="reaction-btn">🤯<strong>5</strong></button>
-              <button class="reaction-btn">⛔<strong>1</strong></button>
+          <li class="fact-tile">
+            <div class="fact-row">
+              <span class="fact-text">
+                The first iPhone was released on June 29, 2007. It combined
+                phone, iPod, and internet in one device, and became one of the
+                most popular smartphones globally.
+                <span class="tag technology">#technology#</span>
+                <a
+                  href="https://en.wikipedia.org/wiki/IPhone_(1st_generation)"
+                  target="_blank"
+                  rel="noopener"
+                  >(Source)</a
+                >
+              </span>
+              <div class="reactions">
+                <button class="reaction-btn">👍<strong>17</strong></button>
+                <button class="reaction-btn">🤯<strong>5</strong></button>
+                <button class="reaction-btn">⛔<strong>1</strong></button>
+              </div>
             </div>
           </li>
-          <li>
-            <p class="fact">
-              Millenials dads spend an average of 2 hours and 20 minutes a day
-              caring for their children, according to a study by the Pew
-              Research. In 1982, the average was just 1 hour and 30 minutes.
-              This shows a significant increase in the time dads are spending
-              with their kids.
-              <a
-                href="https://www.pewresearch.org/social-trends/2013/03/14/chapter-4-how-mothers-and-fathers-spend-their-time/"
-                target="_blank"
-                >(Source)</a
-              >
-              <span class="tag"> #society# </span>
-            </p>
-            <div>
-              <button class="reaction-btn">👍<strong>12</strong></button>
-              <button class="reaction-btn">🤯<strong>6</strong></button>
-              <button class="reaction-btn">⛔<strong>8</strong></button>
+          <li class="fact-tile">
+            <div class="fact-row">
+              <span class="fact-text">
+                Millennials dads spend an average of 2 hours and 20 minutes a
+                day caring for their children, compared to just 1 hour and 30
+                minutes in 1982.
+                <span class="tag society">#society#</span>
+                <a
+                  href="https://www.pewresearch.org/social-trends/2013/03/14/chapter-4-how-mothers-and-fathers-spend-their-time/"
+                  target="_blank"
+                  rel="noopener"
+                  >(Source)</a
+                >
+              </span>
+              <div class="reactions">
+                <button class="reaction-btn">👍<strong>12</strong></button>
+                <button class="reaction-btn">🤯<strong>6</strong></button>
+                <button class="reaction-btn">⛔<strong>8</strong></button>
+              </div>
+            </div>
+          </li>
+          <li class="fact-tile">
+            <div class="fact-row">
+              <span class="fact-text">
+                In 2025, immigration and deportation policies are a major point
+                of contention worldwide, affecting both politics and economics.
+                <span class="tag politics">#politics#</span>
+                <a
+                  href="https://www.cidob.org/en/publications/world-2025-ten-issues-will-shape-international-agenda"
+                  target="_blank"
+                  rel="noopener"
+                  >(Source)</a
+                >
+              </span>
+              <div class="reactions">
+                <button class="reaction-btn">👍<strong>8</strong></button>
+                <button class="reaction-btn">🤯<strong>2</strong></button>
+                <button class="reaction-btn">⛔<strong>1</strong></button>
+              </div>
+            </div>
+          </li>
+          <li class="fact-tile">
+            <div class="fact-row">
+              <span class="fact-text">
+                British football club Wrexham made history by earning three
+                successive promotions, an English football record as of 2025.
+                <span class="tag sports">#sports#</span>
+                <a
+                  href="https://www.topendsports.com/world/timeline/2025.htm"
+                  target="_blank"
+                  rel="noopener"
+                  >(Source)</a
+                >
+              </span>
+              <div class="reactions">
+                <button class="reaction-btn">👍<strong>10</strong></button>
+                <button class="reaction-btn">🤯<strong>3</strong></button>
+                <button class="reaction-btn">⛔<strong>0</strong></button>
+              </div>
+            </div>
+          </li>
+          <li class="fact-tile">
+            <div class="fact-row">
+              <span class="fact-text">
+                Generative AI is the most influential technology trend of 2025,
+                impacting everything from content creation to healthcare.
+                <span class="tag technology">#technology#</span>
+                <a
+                  href="https://www.simplilearn.com/top-technology-trends-and-jobs-article"
+                  target="_blank"
+                  rel="noopener"
+                  >(Source)</a
+                >
+              </span>
+              <div class="reactions">
+                <button class="reaction-btn">👍<strong>15</strong></button>
+                <button class="reaction-btn">🤯<strong>7</strong></button>
+                <button class="reaction-btn">⛔<strong>2</strong></button>
+              </div>
+            </div>
+          </li>
+          <li class="fact-tile">
+            <div class="fact-row">
+              <span class="fact-text">
+                According to the UN’s 2025 World Social Report, over 60% of the
+                global population experiences economic insecurity.
+                <span class="tag society">#society#</span>
+                <a
+                  href="https://currentaffairs.adda247.com/world-social-report-2025-a-global-call-for-equity-and-security/"
+                  target="_blank"
+                  rel="noopener"
+                  >(Source)</a
+                >
+              </span>
+              <div class="reactions">
+                <button class="reaction-btn">👍<strong>9</strong></button>
+                <button class="reaction-btn">🤯<strong>5</strong></button>
+                <button class="reaction-btn">⛔<strong>1</strong></button>
+              </div>
+            </div>
+          </li>
+          <li class="fact-tile">
+            <div class="fact-row">
+              <span class="fact-text">
+                On May 5, 1961, astronaut Alan B. Shepard Jr. became America's
+                first space traveler during a 15-minute suborbital flight aboard
+                the Mercury capsule Freedom 7.
+                <span class="tag history">#history#</span>
+                <a
+                  href="https://www.lewistownsentinel.com/uncategorized/2025/05/today-in-history-626/"
+                  target="_blank"
+                  rel="noopener"
+                  >(Source)</a
+                >
+              </span>
+              <div class="reactions">
+                <button class="reaction-btn">👍<strong>11</strong></button>
+                <button class="reaction-btn">🤯<strong>4</strong></button>
+                <button class="reaction-btn">⛔<strong>0</strong></button>
+              </div>
+            </div>
+          </li>
+          <li class="fact-tile">
+            <div class="fact-row">
+              <span class="fact-text">
+                <strong>Fact of the Day:</strong> In 2025, India's new tax
+                regime means salaries up to ₹12.75 lakh pay no income tax after
+                deductions.
+                <span class="tag society">#society#</span>
+                <a
+                  href="https://www.pib.gov.in/PressNoteDetails.aspx?NoteId=154926&ModuleId=3"
+                  target="_blank"
+                  rel="noopener"
+                  >(Source)</a
+                >
+              </span>
+              <div class="reactions">
+                <button class="reaction-btn">👍<strong>14</strong></button>
+                <button class="reaction-btn">🤯<strong>3</strong></button>
+                <button class="reaction-btn">⛔<strong>2</strong></button>
+              </div>
             </div>
           </li>
         </ul>
-        <p>Build by Mayank</p>
+        <footer>
+          <p
+            style="
+              margin: 3em 0 0 0;
+              text-align: center;
+              font-family: Poppins, sans-serif;
+              color: #bbb;
+              font-size: 0.9em;
+            "
+          >
+            Built by Mayank · <span style="color: #ffd700">SnackTIL</span>
+          </p>
+        </footer>
       </section>
     </main>
   </body>
