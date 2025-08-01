@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Coiny&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sono:wght@200..800&display=swap"
+      rel="stylesheet"
+    />
+    <link href="styles.css" rel="stylesheet" />
+    <title>SnackTIL – Today I Learned</title>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div
+        class="logo"
+        style="flex-direction: row; align-items: center; gap: 18px"
+      >
+        <img
+          src="logo.png"
+          alt="TIL logo"
+          style="
+            height: 48px;
+            width: 48px;
+            object-fit: cover;
+            border-radius: 50%;
+          "
+        />
+        <h1
+          style="
+            margin: 0;
+            color: #33ffe6;
+            font-family: 'Coiny', cursive;
+            font-size: 2em;
+            letter-spacing: 2px;
+          "
+        >
+          Today I Learned
+        </h1>
+      </div>
+      <button class="share-btn">Share a Fact</button>
+    </header>
+
+    <!-- Main content layout -->
+    <main
+      style="
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: flex-start;
+        max-width: 1440px;
+        margin: 2.2em auto 0 auto;
+        padding: 0 2vw;
+        gap: 28px;
+      "
+    >
+      <!-- Sidebar: Category filters -->
+      <aside style="min-width: 160px; max-width: 200px">
+        <nav aria-label="Filter facts by category">
+          <h2
+            style="
+              font-size: 1.08em;
+              color: #ffeda1;
+              margin-bottom: 0.55em;
+              margin-top: 0.5em;
+              font-weight: 700;
+              letter-spacing: 1px;
+            "
+          >
+            Categories
+          </h2>
+          <ul>
+            <li>
+              <button class="category-btn" data-category="all">All</button>
+            </li>
+            <li>
+              <button class="category-btn" data-category="technology">
+                Technology
+              </button>
+            </li>
+            <li>
+              <button class="category-btn" data-category="society">
+                Society
+              </button>
+            </li>
+            <li>
+              <button class="category-btn" data-category="history">
+                History
+              </button>
+            </li>
+            <li>
+              <button class="category-btn" data-category="politics">
+                Politics
+              </button>
+            </li>
+            <li>
+              <button class="category-btn" data-category="sports">
+                Sports
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- Main section: Fact form & facts list -->
+      <section style="flex: 1; max-width: 980px">
+        <!-- Fact submission form -->
+        <form
+          id="factForm"
+          enctype="multipart/form-data"
+          style="margin: 0 auto 2.2em auto"
+        >
+          <input
+            type="text"
+            name="summary"
+            placeholder="Share a fact..."
+            maxlength="200"
+            required
+          />
+          <span>200</span>
+          <input
+            type="text"
+            name="source"
+            placeholder="Trustworthy source..."
+          />
+          <select name="category" required>
+            <option value="">Choose Category:</option>
+            <option value="technology">Technology</option>
+            <option value="society">Society</option>
+            <option value="history">History</option>
+            <option value="science">Science</option>
+            <option value="art">Art</option>
+            <option value="globe">Globe</option>
+            <option value="sports">Sports</option>
+            <option value="politics">Politics</option>
+            <option value="all">All</option>
+          </select>
+
+          <!-- Custom file upload -->
+          <label
+            for="imageUpload"
+            class="file-upload-label"
+            title="Choose image"
+          >
+            📁 Upload Image
+          </label>
+          <input
+            type="file"
+            id="imageUpload"
+            name="image"
+            accept="image/*"
+            style="display: none"
+          />
+
+          <button type="submit">Post</button>
+        </form>
+
+        <!-- Dynamic fact cards -->
+        <ul class="facts-list">
+          <!-- Filled dynamically by JS -->
+        </ul>
+
+        <!-- Footer -->
+        <footer>
+          <p
+            style="
+              margin: 3em 0 0 0;
+              text-align: center;
+              font-family: Poppins, sans-serif;
+              color: #bbb;
+              font-size: 0.9em;
+            "
+          >
+            Built by Mayank · <span style="color: #ffd700">SnackTIL</span>
+          </p>
+        </footer>
+      </section>
+    </main>
+
+    <!-- Link your JavaScript -->
+    <script src="main.js"></script>
+  </body>
+</html>
