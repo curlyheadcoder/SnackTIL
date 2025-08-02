@@ -12,6 +12,147 @@
     />
     <link href="styles.css" rel="stylesheet" />
     <title>SnackTIL – Today I Learned</title>
+    <style>
+      /* Minimal CSS for mixed feed grid and tiles */
+      #mixed-feed-section ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.25rem;
+      }
+      .mixed-tile {
+        border: 1px solid #333;
+        border-radius: 8px;
+        overflow: hidden;
+        background: #111;
+        color: #eee;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        box-shadow: 0 2px 8px rgb(51 255 230 / 0.5);
+        font-family: "Poppins", sans-serif;
+      }
+      .mixed-tile img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+      }
+      .tile-type-badge {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        padding: 4px 8px;
+        background: #33ffe6;
+        color: #000;
+        font-weight: 700;
+        font-size: 0.75em;
+        border-radius: 4px;
+        text-transform: uppercase;
+        font-family: "Poppins", sans-serif;
+      }
+      .tile-content {
+        padding: 10px 12px;
+        flex-grow: 1;
+      }
+      .tile-content strong {
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+      .tile-content p {
+        font-size: 0.9em;
+        color: #bbb;
+        margin: 0;
+      }
+      .tile-footer {
+        padding: 10px 12px;
+        background: #222;
+        font-size: 0.85em;
+        border-top: 1px solid #33ffe6;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .tile-footer a {
+        color: #33ffe6;
+        text-decoration: none;
+      }
+      .tag {
+        margin-left: 8px;
+        font-weight: 600;
+        font-family: "Poppins", sans-serif;
+        font-size: 0.9em;
+        color: #ffeda1;
+      }
+      .tag.technology {
+        color: #33ffe6;
+      }
+      .tag.society {
+        color: #ff75a0;
+      }
+      .tag.history {
+        color: #ffb347;
+      }
+      .tag.politics {
+        color: #ffa500;
+      }
+      .tag.sports {
+        color: #5d9cec;
+      }
+      .reactions button {
+        background: none;
+        border: none;
+        color: #33ffe6;
+        cursor: pointer;
+        margin-left: 8px;
+        font-size: 1.1em;
+        display: flex;
+        align-items: center;
+      }
+      .reactions button strong {
+        margin-left: 4px;
+        font-weight: 700;
+      }
+      /* Existing fact tiles minor fix */
+      .fact-tile .tag {
+        margin-left: 6px;
+        font-weight: 600;
+        font-family: "Poppins", sans-serif;
+        font-size: 0.85em;
+        color: #ffeda1;
+      }
+      .fact-tile .tag.technology {
+        color: #33ffe6;
+      }
+      .fact-tile .tag.society {
+        color: #ff75a0;
+      }
+      .fact-tile .tag.history {
+        color: #ffb347;
+      }
+      .fact-tile .tag.politics {
+        color: #ffa500;
+      }
+      .fact-tile .tag.sports {
+        color: #5d9cec;
+      }
+      /* Style reaction buttons on fact tiles */
+      .fact-tile .reactions button {
+        background: none;
+        border: none;
+        color: #33ffe6;
+        cursor: pointer;
+        margin-left: 8px;
+        font-size: 1.1em;
+        display: inline-flex;
+        align-items: center;
+      }
+      .fact-tile .reactions button strong {
+        margin-left: 4px;
+        font-weight: 700;
+      }
+    </style>
   </head>
   <body>
     <!-- Header -->
@@ -106,7 +247,7 @@
         </nav>
       </aside>
 
-      <!-- Main section: Fact form & facts list -->
+      <!-- Main section: Fact form & feeds -->
       <section style="flex: 1; max-width: 980px">
         <!-- Fact submission form -->
         <form
@@ -159,10 +300,30 @@
           <button type="submit">Post</button>
         </form>
 
+        <!-- New Mixed Feed Section for News, Facts & Data -->
+        <section id="mixed-feed-section" style="margin-bottom: 3em">
+          <h2
+            style="
+              font-family: 'Poppins', sans-serif;
+              color: #33ffe6;
+              margin-bottom: 0.8em;
+            "
+          >
+            Discover: News, Facts & Data
+          </h2>
+          <ul id="mixed-list">
+            <!-- Mixed feed items will be dynamically inserted here by JS -->
+          </ul>
+        </section>
+
         <!-- Dynamic fact cards -->
-        <ul class="facts-list">
-          <!-- Filled dynamically by JS -->
-        </ul>
+        <ul class="facts-list"></ul>
+        <div
+          id="feed-loader"
+          style="display: none; text-align: center; padding: 24px"
+        >
+          <em>Loading...</em>
+        </div>
 
         <!-- Footer -->
         <footer>
